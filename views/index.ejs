@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelos</title>
+  </head>
+  <body>
+    <h1>Listado de modelos</h1>
+    <a href="/models/new">Nuevo Modelo</a>
+    <ul>
+      <% if(typeof models !== 'undefined') { %> <% models.forEach(model => { %>
+      <li>
+        <span href="/models/<%= model.id %>"><%= model.name %></span>
+        <a href="/models/<%= model.id %>/edit">Editar</a>
+
+        <form method="POST" action="/models/<%= model.id %>?_method=DELETE">
+          <button type="submit">Eliminar</button>
+        </form>
+      </li>
+      <% }); %> <% } else { %>
+      <li>No hay modelos disponibles</li>
+      <% } %>
+    </ul>
+  </body>
+</html>
